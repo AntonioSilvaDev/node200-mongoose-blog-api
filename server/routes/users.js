@@ -46,11 +46,9 @@ router.delete('/:id', (req, res) => {
     User
         .findByIdAndDelete(req.params.id)
         .then(user => {
-            res.status(200).send(user, `User removed from DB!`);
+            res.status(200).send(`User removed from DB!`);
         })
-        .catch(function(err) {
-            res.status(500).send('User no longer exists!')
-        });
+        .catch(err => console.log(err));
 })
 
 module.exports = router;

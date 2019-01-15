@@ -1,8 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+require('dotenv').config()
 
-mongoose.connect('mongodb://localhost/my-blog', { useNewUrlParser: true });
+const adminName = process.env.MLAB_ADMIN_NAME;
+const key = process.env.MLAB_PASSWORD;
+
+mongoose.connect(`mongodb://${adminName}:${key}@ds235418.mlab.com:35418/testapi`, { useNewUrlParser: true });
 mongoose.Promise = Promise;
 
 const app = express();
